@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closures</title>
+</head>
+
+<body>
+    <script>
+        //========== 1 ============
+
+        function createSum() {
+            let sum = 0;
+            return function (arg) {
+                return sum += arg;
+            }
+        }
+
+        const sum = createSum();
+
+        console.log(sum(2));
+        console.log(sum(3));
+        console.log(sum(4));
+        console.log(sum(5));
+
+
+        //========== 2 ============
+
+        function createCounter(initialValue, step) {
+            let count = initialValue;
+
+            function counter() {
+                return count += step;
+            }
+
+            counter.reset = () => count = initialValue;
+            return counter;
+        }
+
+        const counter = createCounter(10, 2);
+
+        console.log(counter());
+        console.log(counter());
+        console.log(counter());
+        console.log(counter.reset());
+        console.log(counter());
+        console.log(counter());
+
+
+    </script>
+
+
+</body>
+
+</html>
